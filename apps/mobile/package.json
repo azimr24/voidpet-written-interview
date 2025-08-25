@@ -23,7 +23,9 @@
     "react-native": "0.79.6",
     "react-native-safe-area-context": "^5.6.1",
     "react-native-screens": "^4.15.2",
+    "react-native-svg": "15.11.2",
     "react-native-worklets": "^0.4.1",
+    "svg-parser": "^2.0.4",
     "tailwind-react-native-classnames": "^3.0.1",
     "tailwindcss": "^3.4.17",
     "twrnc": "^4.9.1",
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
+    "@types/svg-parser": "^2.0.6",
     "typescript": "~5.8.3"
   },
   "private": true

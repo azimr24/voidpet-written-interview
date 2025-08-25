@@ -1,11 +1,37 @@
 import { useAuth } from "../store/useAuth";
 import * as AppleAuthentication from "expo-apple-authentication";
-import { ImageBackground, Image, Text, View, Pressable } from "react-native";
+import {
+  ImageBackground,
+  Image,
+  Text,
+  View,
+  Pressable,
+  Dimensions,
+} from "react-native";
+import { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
+import type { AuthStackParamList } from "../navigation/types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function SignupScreen() {
-  // const { token, user, setAuth, clear } = useAuth();
+type SignupScreenNavigationProp = NativeStackNavigationProp<
+  AuthStackParamList,
+  "Signup"
+>;
+
+type Props = {
+  navigation: SignupScreenNavigationProp;
+};
+
+const { width } = Dimensions.get("window");
+export default function SignupScreen({ navigation }: Props) {
+  const { token, user, deviceId, starterId, setSession, setDeviceId, clear } =
+    useAuth();
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  const beginJourney = async () => {
+    navigation.navigate("Onboarding");
+  };
 
   return (
     <ImageBackground
@@ -19,14 +45,25 @@ export default function SignupScreen() {
         start={{ x: 0, y: 1 }}
         end={{ x: 0, y: 0 }}
       />
-      <View style={tw`absolute top-1/5 justify-center items-center`}>
+      <View
+        onLayout={(e) => {
+          const { width, height } = e.nativeEvent.layout;
+          setSize({ width, height });
+        }}
+        style={[
+          tw`absolute top-1/5 left-1/2 justify-center items-center`,
+          {
+            transform: [{ translateX: -size.width / 2 }],
+          },
+        ]}
+      >
         <Text
           style={[
             tw`text-white text-4xl`,
             { fontFamily: "BungeeRegular", textAlign: "center", fontSize: 40 },
           ]}
         >
-          VOIDPET DUNGEON
+          VOIDPET{"\n"}DUNGEON
         </Text>
         <Image
           style={tw`w-100px h-100px`}
@@ -35,6 +72,7 @@ export default function SignupScreen() {
       </View>
       <View style={tw`top-7/10 justify-center items-center`}>
         <Pressable
+          onPress={beginJourney}
           style={[
             tw` rounded-2xl mb-8 py-2 px-4`,
             {

@@ -1,0 +1,9 @@
+// src/navigation/types.ts
+export type AuthStackParamList = {
+  Signup: undefined;
+  Onboarding: undefined;
+};
+
+export type AppStackParamList = {
+  Home: undefined;
+};

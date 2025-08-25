@@ -20,6 +20,7 @@ model User {
     authType String // 'ANON' | 'APPLE'
     deviceId String? @unique
     appleSub String? @unique
+    starterId String? @unique
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }

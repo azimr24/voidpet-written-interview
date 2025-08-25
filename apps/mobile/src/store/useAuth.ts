@@ -11,6 +11,7 @@ type State = {
   token: string | null;
   user: User | null;
   deviceId: string | null;
+  starterId: string | null;
   setSession: (token: string, user: User) => void;
   setDeviceId: (deviceId: string) => void;
   clear: () => void;
@@ -22,6 +23,7 @@ export const useAuth = create<State>()(
       token: null,
       user: null,
       deviceId: null,
+      starterId: null,
       setSession: (token, user) => set({ token, user }),
       setDeviceId: (id) => set({ deviceId: id }),
       clear: () => set({ token: null, user: null }),
