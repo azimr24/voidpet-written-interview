@@ -1,17 +1,16 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import { usersRouter } from "./users/users.routes";
+import { ensureDatabase } from "./db"; // note .js in ESM after TS compile
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-app.get("/health", (req, res) => {
-  res.json({ ok: true });
-});
-
+app.use("/users", usersRouter);
+app.get("/health", (_req, res) => res.json({ ok: true }));
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+ensureDatabase().then(() => {
+  app.listen(PORT, () => console.log(`API listening on :${PORT}`));
 });

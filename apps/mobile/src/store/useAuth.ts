@@ -1,32 +1,16 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createSessionSlice, SessionSlice } from "./sessionSlice";
+import { createUserSlice, UserSlice } from "./userSlice";
 
-type User = {
-  id: string;
-  displayName: string;
-};
+type Store = SessionSlice & UserSlice;
 
-type State = {
-  token: string | null;
-  user: User | null;
-  deviceId: string | null;
-  starterId: string | null;
-  setSession: (token: string, user: User) => void;
-  setDeviceId: (deviceId: string) => void;
-  clear: () => void;
-};
-
-export const useAuth = create<State>()(
+export const useAuth = create<Store>()(
   persist(
-    (set) => ({
-      token: null,
-      user: null,
-      deviceId: null,
-      starterId: null,
-      setSession: (token, user) => set({ token, user }),
-      setDeviceId: (id) => set({ deviceId: id }),
-      clear: () => set({ token: null, user: null }),
+    (...a) => ({
+      ...createSessionSlice(...a),
+      ...createUserSlice(...a),
     }),
     { name: "auth", storage: createJSONStorage(() => AsyncStorage) },
   ),
