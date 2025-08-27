@@ -4,7 +4,7 @@ Shameless project (tested on iPhone 16 Pro) I worked on for the voidpet written 
 
 ## Demo Video
 
-[![Demo Video](https://drive.google.com/file/d/1rE2CxPSTsYJvkFB20xtkkruM0xomCPiy/view?usp=sharing)
+[![Demo Video](https://drive.google.com/file/d/1rE2CxPSTsYJvkFB20xtkkruM0xomCPiy/view?usp=sharing)]
 
 ## Project Structure
 
