@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { prisma } from "../db.js"; // your PrismaClient instance
+import { prisma } from "../db.js";
 import { z } from "zod";
 import { signAppJwt } from "../auth/jwt";
 
@@ -26,10 +26,4 @@ export async function createUser(req: Request, res: Response) {
     console.error(err);
     res.status(500).json({ error: "Failed to create user" });
   }
-}
-
-export async function me(req: Request, res: Response) {
-  const user = await prisma.user.findUnique({ where: { id: req.userId! } });
-  if (!user) return res.status(404).json({ error: "Not found" });
-  return res.json(user);
 }

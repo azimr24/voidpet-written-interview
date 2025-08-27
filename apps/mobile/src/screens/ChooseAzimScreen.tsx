@@ -1,23 +1,20 @@
 import React from "react";
 import { View, Text, Pressable, ImageBackground } from "react-native";
 import tw from "twrnc";
-import { pathMapLayers } from "../../sprite_paths/pathMapLayers";
-import { PathLayerToSVGPrim } from "../helpers/SVGPrims";
-import Svg from "react-native-svg";
 import { useState } from "react";
 import type { AuthStackParamList } from "../navigation/types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { FrameSprite } from "../components/FrameSprite";
 
-type OnboardingScreenNavigationProp = NativeStackNavigationProp<
+type ChooseAzimScreenNavigationProp = NativeStackNavigationProp<
   AuthStackParamList,
-  "Onboarding"
+  "ChooseAzim"
 >;
 
 type Props = {
-  navigation: OnboardingScreenNavigationProp;
+  navigation: ChooseAzimScreenNavigationProp;
 };
-export default function OnboardingScreen({ navigation }: Props) {
-  const pathLayers = pathMapLayers["Ambition1-frame0"];
+export default function ChooseAzimScreen({ navigation }: Props) {
   const [hireSelected, setHireSelected] = useState(false);
   const azimSelected = () => setHireSelected(true);
   const chooseAzim = () => {
@@ -36,15 +33,7 @@ export default function OnboardingScreen({ navigation }: Props) {
           style={tw`w-45 h-45 justify-center items-center`}
           onPress={azimSelected}
         >
-          <Svg
-            width="100%" // fill the Pressable
-            height="100%"
-            viewBox="0 0 200 200" // scale paths to fit
-          >
-            {pathLayers.map((layer, index) => (
-              <PathLayerToSVGPrim key={index} {...layer} />
-            ))}
-          </Svg>
+          <FrameSprite frame="Ambition1-frame0"></FrameSprite>
         </Pressable>
         <Text
           style={[tw`text-sm font-bold mb-5`, { fontFamily: "BungeeRegular" }]}
@@ -53,7 +42,15 @@ export default function OnboardingScreen({ navigation }: Props) {
         </Text>
         {hireSelected && (
           <View style={tw`flex items-center justify-center gap-4`}>
-            <View style={tw`rounded-md bg-[#18191a] p-4 w-320px`}>
+            <View
+              style={[
+                tw`rounded-md bg-[#18191a] p-4 w-320px`,
+                {
+                  outlineColor: "#41464f",
+                  outlineWidth: 4,
+                },
+              ]}
+            >
               <Text
                 style={[
                   tw`text-xs text-white`,

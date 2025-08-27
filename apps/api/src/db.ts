@@ -1,3 +1,4 @@
+// straight from chat cause I didn't rmr
 // apps/api/src/db.ts
 import { PrismaClient } from "@prisma/client";
 

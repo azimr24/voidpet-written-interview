@@ -1,0 +1,105 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [{ "->": "START" }, ["done", { "#f": 5, "#n": "g-0" }], null],
+    "done",
+    {
+      "START": [
+        [
+          "^I'm excited to work at Voidpet Dungeon primarily because of my love for turn based RPGs and my own experience with mental health.",
+          "ev",
+          "str",
+          "^Talk about Pokémon & RPGs",
+          "/str",
+          "/ev",
+          { "*": ".^.c-0", "flg": 20 },
+          { "c-0": ["^ ", { "->": "POKEMON" }, "\n", { "#f": 5 }] }
+        ],
+        { "#f": 1 }
+      ],
+      "POKEMON": [
+        [
+          "^I started playing Pokémon games around the age of 8 because I was fortunate to have an older brother who was obsessed with the franchise. I can’t exactly remember my first game, but I’ve played the games from about every generation of Pokémon.",
+          "\n",
+          "^Beyond the stock games, I got really big on ROM hacks—modified and custom versions of the original games with new Pokémon, new characters and new storylines which I found maximized the user experience.",
+          "ev",
+          "str",
+          "^Reflect on RPGs today",
+          "/str",
+          "/ev",
+          { "*": ".^.c-0", "flg": 20 },
+          { "c-0": ["^ ", { "->": "RPGS_NOW" }, "\n", { "#f": 5 }] }
+        ],
+        { "#f": 1 }
+      ],
+      "RPGS_NOW": [
+        [
+          "^I definitely don’t play RPGs as often as I used to (still love the Persona series though if you’ve heard of it) and I’m fine with that! “I’m too old for video games.” 😂 But one regret I have is not making my own ROM hack or RPG when I was younger.",
+          "ev",
+          "str",
+          "^Regret about not making your own RPG",
+          "/str",
+          "/ev",
+          { "*": ".^.c-0", "flg": 20 },
+          { "c-0": ["^ ", { "->": "REGRET" }, "\n", { "#f": 5 }] }
+        ],
+        { "#f": 1 }
+      ],
+      "REGRET": [
+        [
+          "^To me, probably the only thing more intricate than coding up and shipping a product as a software engineer is coding up and shipping a successful video game—a sprite and turn based one at that!",
+          "\n",
+          "^I truly want to experience the ups and downs that come with this kind of software development and the upkeep of such a game.",
+          "\n",
+          "^Creating characters and features, sifting through channels of users and bugs they found, sifting through channels of users who think they found a bug, but there WiFi was just turned off; this may speak a lot to who I am, but I shamelessly think that sounds like a ton of fun.",
+          "ev",
+          "str",
+          "^Talk about Mental Health",
+          "/str",
+          "/ev",
+          { "*": ".^.c-0", "flg": 20 },
+          { "c-0": ["^ ", { "->": "MENTAL" }, "\n", { "#f": 5 }] }
+        ],
+        { "#f": 1 }
+      ],
+      "MENTAL": [
+        "^Beyond that, when considering Voidpet Dungeon is a game that platforms mental health in a digestible, destigmatized way and acknowledging my own mental health struggles that I worked through in college, I really believe that working on Voidpet Dungeon would be a truly transformative opportunity.",
+        "\n",
+        "^Although I would always have Voidpets like Ambition and Determination by my side, Pain and Anxious would definitely be following very closely behind to say the least. I think much of my own journey with mental health has been trying to normalize, accept and grow with the Voidpets (and emotions) that I would in past try to avoid and fight off with a Super Soak or Bubble Blast. This is all to say, if I can become an active member in Voidpet Dungeon's continued success and play a role putting the game in the hands of others who love RPGs and know the weight of mental health, nothing would excite me more.",
+        "end",
+        { "#f": 1 }
+      ],
+      "END": [
+        [
+          [
+            "ev",
+            { "^->": "END.0.0.$r1" },
+            { "temp=": "$r" },
+            "str",
+            { "->": ".^.s" },
+            [{ "#n": "$r1" }],
+            "/str",
+            "/ev",
+            { "*": ".^.^.c-0", "flg": 18 },
+            { "s": ["^THE END.*", { "->": "$r", "var": true }, null] }
+          ],
+          {
+            "c-0": [
+              "ev",
+              { "^->": "END.0.c-0.$r2" },
+              "/ev",
+              { "temp=": "$r" },
+              { "->": ".^.^.0.s" },
+              [{ "#n": "$r2" }],
+              "\n",
+              { "#f": 5 }
+            ]
+          }
+        ],
+        { "#f": 1 }
+      ],
+      "#f": 1
+    }
+  ],
+  "listDefs": {}
+}

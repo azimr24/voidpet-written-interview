@@ -1,8 +1,5 @@
-import { useAuth } from "../store/useAuth";
-import * as AppleAuthentication from "expo-apple-authentication";
 import { ImageBackground, Image, Text, View, Pressable } from "react-native";
-import { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import LottieView from "lottie-react-native";
 import tw from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
 import type { AuthStackParamList } from "../navigation/types";
@@ -19,7 +16,7 @@ type Props = {
 
 export default function SignupScreen({ navigation }: Props) {
   const beginJourney = async () => {
-    navigation.navigate("Onboarding");
+    navigation.navigate("ChooseAzim");
   };
 
   return (
@@ -34,6 +31,12 @@ export default function SignupScreen({ navigation }: Props) {
         start={{ x: 0, y: 1 }}
         end={{ x: 0, y: 0 }}
       />
+      <LottieView
+        style={tw`absolute inset-0`}
+        source={require("../../assets/lottie/snow.lottie")}
+        autoPlay
+        loop
+      ></LottieView>
       <View style={tw`absolute top-1/5 justify-center items-center`}>
         <Text
           style={[

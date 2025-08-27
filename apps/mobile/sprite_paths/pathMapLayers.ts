@@ -1,5 +1,3 @@
-import { PathLayer } from "../src/helpers/types";
-
 export const pathMapLayers = {
   "Ambition1-frame0": [
     {
@@ -55,5 +53,21 @@ export const pathMapLayers = {
       props: { cx: 139.679, cy: 101.745, r: 1.28571, fill: "white" },
     },
   ],
+  "Sad1-frame0": [
+    {
+      tagName: "path",
+      props: {
+        d: "M100.879 57.7833C77.2579 76.1553 83.1691 96.7906 71.5 108.46C55.2944 124.665 40.1476 124.796 28 108.46C37.2495 140.017 71.9055 154.958 102.336 140.009C126.971 127.908 120.056 101.112 129.564 97.655C139.072 94.1975 158.953 92.6044 164.572 86.5537C170.19 80.5031 175.241 62.4614 163.572 62.4614C151.903 62.4614 124.5 39.4113 100.879 57.7833Z",
+        fill: "black",
+      },
+    },
+    {
+      tagName: "path",
+      props: {
+        d: "M127.612 61.0506C127.612 61.0506 134.753 74.2032 127.931 79.8121C121.109 85.421 109.251 76.1471 109.251 76.1471C109.251 76.1471 114.504 77.387 121.326 71.7781C128.147 66.1692 127.612 61.0506 127.612 61.0506Z",
+        fill: "white",
+      },
+    },
+  ],
 };
-export const pathRecordLayers: Record<string, PathLayer[]> = pathMapLayers;
+export const pathRecordLayers: Record<string, Array<any>> = pathMapLayers;

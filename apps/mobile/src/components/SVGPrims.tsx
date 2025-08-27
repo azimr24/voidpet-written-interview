@@ -1,5 +1,5 @@
 import Svg, { Path, Circle, Ellipse } from "react-native-svg";
-import { PathLayer } from "./types";
+import { PathLayer } from "../utils/types";
 
 export const PathLayerToSVGPrim = (layer: PathLayer) => {
   const { tagName, props } = layer;

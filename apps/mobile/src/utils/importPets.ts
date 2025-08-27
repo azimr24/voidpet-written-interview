@@ -1,7 +1,6 @@
 import path from "path";
 import { readFileSync, readdirSync, writeFileSync } from "fs";
 import { svgToPathLayers } from "./svgToPathLayers";
-import { parse } from "svg-parser";
 
 export const importPets = () => {
   const petPath = path.join(__dirname, "../../assets/svgs/sprites");

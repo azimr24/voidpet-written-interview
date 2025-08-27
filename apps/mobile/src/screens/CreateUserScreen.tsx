@@ -18,7 +18,6 @@ export default function CreateUserScreen({ navigation }: Props) {
   const [text, setText] = useState<string>("");
   const { setToken, setUser } = useAuth();
   const handleSetUsername = async () => {
-    console.log("handleSetUsername");
     const response = await fetch("http://localhost:4000/users/create-user", {
       method: "POST",
       headers: {
@@ -29,6 +28,7 @@ export default function CreateUserScreen({ navigation }: Props) {
     const data = await response.json();
     setUser(data.user);
     setToken(data.token);
+    navigation.navigate("Purpose");
   };
   useEffect(() => {
     if (inputRef.current) {
@@ -51,35 +51,38 @@ export default function CreateUserScreen({ navigation }: Props) {
           onChangeText={setText}
           ref={inputRef}
           placeholder="Username"
+          maxLength={100}
           style={[
             tw`text-black w-358px rounded-full text-sm py-2 px-4 bg-white`,
             { fontFamily: "SairaSemiBold", textAlign: "left" },
           ]}
         />
       </View>
-      <Pressable
-        onPress={handleSetUsername}
-        style={[
-          tw`text-black w-350px rounded-full text-sm py-1 px-4 bg-white`,
-          {
-            outlineColor: "#6ad9f7",
-            outlineWidth: 4,
-            backgroundColor: "#67bed6",
-          },
-        ]}
-      >
-        <Text
+      {text.length > 2 && (
+        <Pressable
+          onPress={handleSetUsername}
           style={[
-            tw`text-white text-xl`,
+            tw`text-black w-350px rounded-full text-sm py-1 px-4 bg-white`,
             {
-              fontFamily: "BungeeRegular",
-              textAlign: "center",
+              outlineColor: "#c95d1a",
+              outlineWidth: 4,
+              backgroundColor: "#ab480a",
             },
           ]}
         >
-          Set Username
-        </Text>
-      </Pressable>
+          <Text
+            style={[
+              tw`text-white text-xl`,
+              {
+                fontFamily: "BungeeRegular",
+                textAlign: "center",
+              },
+            ]}
+          >
+            Set Username
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 }
